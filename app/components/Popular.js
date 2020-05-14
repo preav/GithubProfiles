@@ -1,7 +1,12 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { fetchPopularRepos } from "../utils/api";
-import { FaUser, FaStar, FaCodeBranch, FaExclamationTriangle } from "react-icons/fa";
+import {
+  FaUser,
+  FaStar,
+  FaCodeBranch,
+  FaExclamationTriangle,
+} from "react-icons/fa";
 
 function LanguagesNav({ selected, onUpdateLanguage }) {
   const languages = ["All", "JavaScipt", "Ruby", "Java", "CSS", "Python"];
@@ -44,14 +49,29 @@ function ReposGrid({ repos }) {
           <li className="repo-item" key={html_url}>
             <div className="repo-item-wrapper">
               <div className="repo-count">#{index + 1}</div>
-              <div className="repo-image"><img className="repo-image" src={avatar_url} alt="user avatar"/></div>
-              <h4 className="repo-name">{name}</h4>
-              <div className="repo-login"><FaUser color="orange"/> {login}</div>
-              <div className="repo-stargazers_count">
-              <FaStar color="yellow"/> {stargazers_count.toLocaleString()} stars
+              <div className="repo-image">
+                <img
+                  className="repo-image"
+                  src={avatar_url}
+                  alt="user avatar"
+                />
               </div>
-              <div className="repo-forks"><FaCodeBranch color="powderblue"/> {forks.toLocaleString()} forks</div>
-              <div className="repo-open_issues"><FaExclamationTriangle color="orange"/> {open_issues.toLocaleString()} open issues</div>
+              <h4 className="repo-name">{name}</h4>
+              <div className="repo-login">
+                <FaUser color="orange" /> {login}
+              </div>
+              <div className="repo-stargazers_count">
+                <FaStar color="yellow" /> {stargazers_count.toLocaleString()}{" "}
+                stars
+              </div>
+              <div className="repo-forks">
+                <FaCodeBranch color="powderblue" /> {forks.toLocaleString()}{" "}
+                forks
+              </div>
+              <div className="repo-open_issues">
+                <FaExclamationTriangle color="orange" />{" "}
+                {open_issues.toLocaleString()} open issues
+              </div>
             </div>
           </li>
         );
@@ -110,7 +130,12 @@ class Popular extends Component {
           selected={selectedLanguage}
           onUpdateLanguage={this.updateLanguage}
         />
-        {this.isLoading() && <div className="repo-loading"> <p> Loading...</p> </div>}
+        {this.isLoading() && (
+          <div className="repo-loading">
+            {" "}
+            <p>Loading...</p>{" "}
+          </div>
+        )}
         {error && <p> {error}</p>}
         {repos[selectedLanguage] && (
           <ReposGrid repos={repos[selectedLanguage]} />
