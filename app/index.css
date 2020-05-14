@@ -1,0 +1,19 @@
+.nav-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-wrapper__item {
+    list-style: none;
+    padding: 10px;
+}
+
+.btn-clr {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
